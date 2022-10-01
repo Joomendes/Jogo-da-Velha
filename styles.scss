@@ -1,0 +1,462 @@
+@import "variables";
+@import "media-queries";
+
+body {
+  background-color: $dark-navy;
+  font-family: "Outfit", arial;
+  margin: 0;
+  @include tablet {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.fade {
+  opacity: 0.5;
+}
+
+h3 {
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  padding: 0;
+  margin: 0;
+  letter-spacing: 0.875px;
+}
+
+.btn-primary {
+  width: 327px;
+  border-radius: 15px;
+  height: 56px;
+
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  color: $dark-navy;
+  letter-spacing: 1px;
+  @include tablet {
+    width: 460px;
+    height: 67px;
+  }
+}
+
+.btn-md {
+  width: 146px;
+  height: 52px;
+}
+
+.btn-sm {
+  width: 76px;
+  height: 52px;
+}
+.gold {
+  box-shadow: inset 0px -8px 0px #cc8b13;
+  background-color: $light-yellow;
+}
+
+.gold:hover {
+  background-color: $light-yellow-hover;
+  cursor: pointer;
+}
+
+.blue {
+  box-shadow: inset 0px -8px 0px #118c87;
+  background-color: $light-blue;
+}
+
+.blue:hover {
+  background-color: $light-blue-hover;
+  cursor: pointer;
+}
+
+.silver {
+  box-shadow: inset 0px -8px 0px #6b8997;
+  background-color: $silver;
+}
+
+.silver:hover {
+  background-color: $silver-hover;
+  cursor: pointer;
+}
+
+.restart:hover {
+  cursor: pointer;
+}
+
+.menu-selected-character {
+  width: 131.99px;
+  height: 54px;
+  background-color: $silver;
+  border-radius: 10px;
+}
+
+#new-game-menu {
+  margin: 0 auto;
+  width: 327px;
+
+  @include tablet {
+    width: 460px;
+  }
+
+  .xo-displayed {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 32px;
+    margin-top: 119px;
+    @include tablet {
+      margin-bottom: 40px;
+    }
+  }
+  img {
+    width: 31.78px;
+    height: 31.78px;
+    margin-left: 8.23px;
+  }
+  h1 {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: $silver;
+    margin: 24px;
+    font-weight: 700;
+  }
+  p {
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    color: $silver;
+    mix-blend-mode: normal;
+    opacity: 0.5;
+    @include tablet {
+      margin-bottom: 30px;
+    }
+  }
+
+  .menu {
+    background-color: $semi-dark-navy;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-shadow: inset 0px -8px 0px #10212a;
+    width: 327px;
+    @include tablet {
+      width: 460px;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .selection {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $dark-navy;
+      border-radius: 10px;
+      width: 279px;
+      height: 72px;
+      @include tablet {
+        width: 412px;
+      }
+      img {
+        margin: 0 auto;
+        height: 32px;
+        width: 32px;
+      }
+
+      .x,
+      .o {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 131.99px;
+        height: 54px;
+        @include tablet {
+          width: 198px;
+          height: 54px;
+        }
+      }
+    }
+    .selection:hover {
+      cursor: pointer;
+    }
+  }
+  .buttons-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .btn-primary.gold {
+      margin-top: 32px;
+      margin-bottom: 16px;
+      @include tablet {
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+#game-board {
+  width: 328px;
+  margin: 0 auto;
+  margin-top: 24px;
+
+  @include tablet {
+    width: 460px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 0px;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .xo-displayed {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-right: 46.03px;
+      @include tablet {
+        margin-right: 85.03px;
+      }
+
+      img {
+        width: 31.74px;
+        height: 31.74px;
+        margin-right: 8.23px;
+      }
+    }
+    .whos-turn {
+      display: flex;
+      align-items: center;
+      background-color: $semi-dark-navy;
+      border-radius: 5px;
+      color: $silver;
+      padding: 9px 15px 13px 15px;
+      box-shadow: inset 0px -4px 0px #10212a;
+      margin-right: 74px;
+      @include tablet {
+        padding: 13px 30px 19px 30px;
+        margin-right: 108px;
+        letter-spacing: 1px;
+      }
+      h2 {
+        margin-left: 9px;
+        font-size: 14px;
+        @include tablet {
+          font-size: 16px;
+        }
+      }
+      img {
+        width: 16px;
+        height: 16px;
+        @include tablet {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    .restart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $silver;
+      box-shadow: inset 0px -4px 0px #6b8997;
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+      @include tablet {
+        width: 52px;
+        height: 52px;
+        border-radius: 10px;
+      }
+      img {
+        width: 15.38px;
+        height: 15.38px;
+        @include tablet {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+  .main-game {
+    margin-top: 64px;
+    @include tablet {
+      margin-top: 19px;
+    }
+    .row {
+      width: 100%;
+      justify-content: space-between;
+      display: flex;
+      .cell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $semi-dark-navy;
+        width: 96px;
+        height: 96px;
+        margin-bottom: 20px;
+        box-shadow: inset 0px -8px 0px #10212a;
+        border-radius: 10px;
+        @include tablet {
+          width: 140px;
+          height: 140px;
+          border-radius: 15px;
+        }
+        img {
+          width: 40px;
+          height: 40px;
+          @include tablet {
+            width: 63.46px;
+            height: 63.46px;
+          }
+        }
+      }
+    }
+  }
+  footer {
+    display: flex;
+    justify-content: space-between;
+    color: $dark-navy;
+
+    .score {
+      width: 96px;
+      height: 64px;
+      text-align: center;
+      border-radius: 10px;
+      @include tablet {
+        width: 140px;
+        height: 72px;
+      }
+      h3 {
+        font-size: 12px;
+        font-weight: 500;
+        margin-top: 12px;
+        letter-spacing: 0.75px;
+        text-align: center;
+
+        @include tablet {
+          letter-spacing: 0.875px;
+          font-size: 14px;
+        }
+      }
+      p {
+        padding: 0;
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;
+        @include tablet {
+          font-size: 24px;
+          line-height: 30px;
+          text-align: center;
+          letter-spacing: 1.5px;
+        }
+      }
+    }
+    #x-score {
+      background-color: $light-blue;
+    }
+    #ties {
+      background-color: $silver;
+    }
+    #o-score {
+      background-color: $light-yellow;
+    }
+  }
+}
+.modal {
+  width: 100%;
+  background-color: $semi-dark-navy;
+  text-align: center;
+  z-index: 10;
+
+  opacity: 1;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .message {
+    color: $silver;
+    padding-top: 40px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    letter-spacing: 0.875px;
+    @include tablet {
+      font-size: 16px;
+    }
+  }
+  img {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    @include tablet {
+      width: 64px;
+      height: 64px;
+      margin-right: 24px;
+    }
+  }
+
+  #winner {
+    font-size: 24px;
+    letter-spacing: 2.5px;
+    margin: 0;
+    font-weight: 700;
+    @include tablet {
+      font-size: 40px;
+    }
+  }
+  .o-winner {
+    color: $light-yellow;
+  }
+  .x-winner {
+    color: $light-blue;
+  }
+  .tied {
+    color: $silver;
+  }
+
+  .result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  p {
+    text-align: center;
+  }
+  .options {
+    padding-bottom: 40px;
+    margin-top: 24px;
+    @include tablet {
+      margin-top: 31px;
+      padding-bottom: 66px;
+    }
+  }
+  .silver {
+    margin-right: 16px;
+  }
+}
+
+#reset-modal {
+  .restart-game {
+    margin: 61px 0px 0px;
+    color: $silver;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: 1.5px;
+    @include tablet {
+      font-size: 40px;
+      line-height: 50px;
+
+      letter-spacing: 2.5px;
+    }
+  }
+}

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Jogo da Velha</title>
+  </head>
+  <body role="main">
+
+    <div id="new-game-menu" role="navigation">
+      <div class="xo-displayed">
+        <img src="./assets/icon-x.png" alt="X" />
+        <img src="./assets/icon-o.png" alt="o" />
+      </div>
+
+      <div class="menu">
+        <h1>Selecione X ou O</h1>
+        <div class="selection">
+          <div class="x" id="x" onclick="toggleSelection(this)">
+            <img src="./assets/icon-x-silver.png" alt="x" />
+          </div>
+          <div
+            class="o menu-selected-character"
+            id="o"
+            onclick="toggleSelection(this)"
+          >
+            <img src="./assets/icon-o-dark-navy.png" alt="o" />
+          </div>
+        </div>
+        <p class="reminder">Obs: X sempre começa!</p>
+      </div>
+      <div class="buttons-container">
+        <button
+          class="btn-primary gold"
+          id="ai"
+          onclick="toggleHumanOrAI(this)"
+        >
+          Novo Jogo (vs CPU)
+        </button>
+        <button
+          class="btn-primary blue"
+          id="human"
+          onclick="toggleHumanOrAI(this)"
+        >
+          Novo Jogo (vs Jogador)
+        </button>
+      </div>
+    </div>
+    <main id="game-board">
+      <header>
+        <div class="xo-displayed">
+          <img src="./assets/icon-x.png" alt="x" />
+          <img src="./assets/icon-o.png" alt="o" />
+        </div>
+        <div class="whos-turn">
+          <img src="./assets/icon-x-silver.png" alt="x" />
+          <h2>Turno</h2>
+        </div>
+        <div class="restart" onclick="restartModalOpen()">
+          <img src="./assets/icon-restart.png" alt="restart" />
+        </div>
+      </header>
+      <div class="main-game">
+        <div class="row">
+          <div
+            class="cell"
+            id="0,2"
+            onClick="cellClickHandler(this)"
+            onMouseEnter="cellHoverEffect(this)"
+            onMouseLeave="cellMouseLeave(this)"
+          ></div>
+          <div
+            class="cell"
+            id="1,2"
+            onClick="cellClickHandler(this)"
+            onMouseEnter="cellHoverEffect(this)"
+            onMouseLeave="cellMouseLeave(this)"
+          ></div>
+          <div
+            class="cell"
+            id="2,2"
+            onClick="cellClickHandler(this)"
+            onMouseEnter="cellHoverEffect(this)"
+            onMouseLeave="cellMouseLeave(this)"
+          ></div>
+        </div>
+        <div class="row">
+          <div
+            class="cell"
+            id="0,1"
+            onClick="cellClickHandler(this)"
+            onMouseEnter="cellHoverEffect(this)"
+            onMouseLeave="cellMouseLeave(this)"
+          ></div>
+          <div
+            class="cell"
+            id="1,1"
+            onClick="cellClickHandler(this)"
+            onMouseEnter="cellHoverEffect(this)"
+            onMouseLeave="cellMouseLeave(this)"
+          ></div>
+          <div
+            class="cell"
+            id="2,1"
+            onClick="cellClickHandler(this)"
+            onMouseEnter="cellHoverEffect(this)"
+            onMouseLeave="cellMouseLeave(this)"
+          ></div>
+        </div>
+
+        <div class="row">
+          <div
+            class="cell"
+            id="0,0"
+            onClick="cellClickHandler(this)"
+            onMouseEnter="cellHoverEffect(this)"
+            onMouseLeave="cellMouseLeave(this)"
+          ></div>
+          <div
+            class="cell"
+            id="1,0"
+            onClick="cellClickHandler(this)"
+            onMouseEnter="cellHoverEffect(this)"
+            onMouseLeave="cellMouseLeave(this)"
+          ></div>
+          <div
+            class="cell"
+            id="2,0"
+            onClick="cellClickHandler(this)"
+            onMouseEnter="cellHoverEffect(this)"
+            onMouseLeave="cellMouseLeave(this)"
+          ></div>
+        </div>
+      </div>
+      <footer>
+        <div class="score" id="x-score">
+          <h3>X (<span id="who-is-x">J1</span>)</h3>
+          <p>0</p>
+        </div>
+        <div class="score" id="ties">
+          <h3>Empate</h3>
+          <p>0</p>
+        </div>
+        <div class="score" id="o-score">
+          <h3>O (<span id="who-is-o">J2</span>)</h3>
+          <p>0</p>
+        </div>
+      </footer>
+    </main>
+    <div class="modal" id="modal">
+      <p class="message">Você perdeu..</p>
+      <div class="result">
+        <img src="./assets/icon-x.png" alt="o" />
+        <p class="x-winner" id="winner">Ganhou a rodada!</p>
+      </div>
+      <div class="options">
+        <button class="btn-primary btn-sm silver" id="quit" onclick="quit()">
+          Sair
+        </button>
+        <button class="btn-primary btn-md gold" id="next" onclick="nextRound()">
+          Próx. Rodada
+        </button>
+      </div>
+    </div>
+
+    <div class="modal" id="reset-modal">
+      <div class="result">
+        <p class="restart-game">REINICIAR O JOGO?</p>
+      </div>
+      <div class="options">
+        <button
+          class="btn-primary btn-md silver"
+          id="cancel"
+          onclick="restartRoundCancel()"
+        >
+          NÃO
+        </button>
+        <button
+          class="btn-primary btn-md gold"
+          id="restart"
+          onclick="restartRound()"
+        >
+          SIM
+        </button>
+      </div>
+    </div>
+
+    <script src="./game.js"></script>
+  </body>
+</html>
